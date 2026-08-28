@@ -431,7 +431,7 @@ Potential improvements include:
 
 ## Author
 
-**Yo5on**
+**Yoson**
 
 Computer Science student interested in AI/ML, robotics, embedded systems, and automation.
 
