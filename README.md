@@ -6,6 +6,23 @@ The project uses two ESP32 boards: one as the gesture-controlled transmitter and
 
 ---
 
+## Project Images
+
+### Transmitter
+
+The transmitter uses an ESP32 and MPU6050 accelerometer to detect hand gestures and transmit movement commands wirelessly.
+
+![Transmitter Wiring Diagram](./wiring%20diagrams/transmitter.png)
+
+### Project Gallery
+
+| Project View | Project View |
+|--------------|--------------|
+| ![](./pic/pic1.jpeg) | ![](./pic/pic2.jpeg) |
+| ![](./pic/pic3.jpeg) | ![](./pic/pic4.jpeg) |
+
+---
+
 ## Project Overview
 
 This project demonstrates a wireless gesture-control system for a two-wheel robotic vehicle.
@@ -190,10 +207,13 @@ Gesture-control-rc-car/
 │   ├── receiver.ino
 │   └── transmitter.ino
 │
-├── pic1.jpeg
-├── pic2.jpeg
-├── pic3.jpeg
-├── pic4.jpeg
+├── pic/
+│   ├── pic1.jpeg
+│   ├── pic2.jpeg
+│   ├── pic3.jpeg
+│   └── pic4.jpeg
+├── wiring diagrams/
+│   └── transmitter.png
 └── README.md
 ```
 
