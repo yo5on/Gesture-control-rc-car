@@ -10,21 +10,11 @@ The project uses two ESP32 boards: one as the gesture-controlled transmitter and
 
 ### Robot
 
-| Front View | Project View |
-|------------|--------------|
-| ![](./pic/pic1.jpeg) | ![](./pic/pic2.jpeg) |
-
-| Hardware | Final Assembly |
-|----------|----------------|
-| ![](./pic/pic3.jpeg) | ![](./pic/pic4.jpeg) |
-
-### Transmitter Wiring
-
-![Transmitter Wiring Diagram](./wiring%20diagrams/transmitter.png)
-
-### Receiver Wiring
-
-![Receiver Wiring Diagram](./wiring%20diagrams/receiver.png)
+| | |
+|---|---|
+| ![](./pic/pic1.jpeg) | ![](./pic/pic3.jpeg) |
+| ![](./pic/pic2.jpeg) | ![](./pic/pic4.jpeg) |
+| | |
 
 ---
 
@@ -439,7 +429,7 @@ Potential improvements include:
 
 # Author
 
-**Yo5on**
+**Yoson**
 
 Computer Science student interested in AI/ML, robotics, embedded systems, and automation.
 
