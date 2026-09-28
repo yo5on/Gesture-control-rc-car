@@ -14,24 +14,18 @@
 
 <samp>An ESP32-based wireless RC car controlled through hand gestures using an MPU6050 accelerometer and ESP-NOW communication.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-overview.svg" width="100%" alt="Overview"/>
-</div>
+<samp><b>Overview</b></samp>
 
 <samp>The project uses two ESP32 boards: one as the gesture-controlled transmitter and another as the receiver responsible for motor control. Tilting the transmitter changes the detected acceleration values, which are mapped to forward, backward, left, right, or stop commands.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-project-images.svg" width="100%" alt="Project Images"/>
-</div>
+<samp><b>Project Images</b></samp>
 
 | | |
 |---|---|
 | ![](./pic/pic1.jpeg) | ![](./pic/pic3.jpeg) |
 | ![](./pic/pic2.jpeg) | ![](./pic/pic4.jpeg) |
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-features.svg" width="100%" alt="Features"/>
-</div>
+<samp><b>Features</b></samp>
 
 - <samp>Gesture-based directional control</samp>
 - <samp>Wireless communication using ESP-NOW</samp>
@@ -44,9 +38,7 @@
 - <samp>Serial output for debugging</samp>
 - <samp>Two-ESP32 transmitter and receiver architecture</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-hardware-components.svg" width="100%" alt="Hardware Components"/>
-</div>
+<samp><b>Hardware Components</b></samp>
 
 | Component | Quantity |
 |---|---:|
@@ -58,9 +50,7 @@
 | Battery / Power Supply | As required |
 | Connecting Wires | As required |
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-transmitter.svg" width="100%" alt="Transmitter"/>
-</div>
+<samp><b>Transmitter</b></samp>
 
 <samp>The transmitter consists of an ESP32 and an MPU6050 motion sensor. The MPU6050 detects movement and tilt, the ESP32 converts acceleration values into movement commands, and ESP-NOW sends those commands wirelessly to the receiver.</samp>
 
@@ -99,9 +89,7 @@ int deadZone = 3000;
 4 = RIGHT
 ```
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-receiver.svg" width="100%" alt="Receiver"/>
-</div>
+<samp><b>Receiver</b></samp>
 
 <samp>The receiver consists of an ESP32 and a motor driver connected to two DC motors. It receives commands through ESP-NOW and controls the motor driver accordingly.</samp>
 
@@ -127,9 +115,7 @@ int deadZone = 3000;
 #define MAX_SPEED 130
 ```
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-wireless-communication.svg" width="100%" alt="Wireless Communication"/>
-</div>
+<samp><b>Wireless Communication</b></samp>
 
 <samp>The transmitter and receiver communicate using ESP-NOW.</samp>
 
@@ -149,9 +135,7 @@ Motor Motor
 
 <samp>The current implementation uses Wi-Fi channel 1 and an unencrypted ESP-NOW peer connection.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-working-principle.svg" width="100%" alt="Working Principle"/>
-</div>
+<samp><b>Working Principle</b></samp>
 
 1. <samp>The user tilts the transmitter.</samp>
 2. <samp>The MPU6050 detects the resulting acceleration.</samp>
@@ -162,9 +146,7 @@ Motor Motor
 7. <samp>The receiver ESP32 processes the command.</samp>
 8. <samp>The motor driver controls the two DC motors.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-project-structure.svg" width="100%" alt="Project Structure"/>
-</div>
+<samp><b>Project Structure</b></samp>
 
 ```text
 Gesture-control-rc-car/
@@ -182,9 +164,7 @@ Gesture-control-rc-car/
 └── README.md
 ```
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-getting-started.svg" width="100%" alt="Getting Started"/>
-</div>
+<samp><b>Getting Started</b></samp>
 
 <samp><b>Prerequisites</b></samp>
 
@@ -218,9 +198,7 @@ cd Gesture-control-rc-car
 
 <samp>Use the Arduino IDE Serial Monitor at <code>115200</code> baud for transmitter and receiver diagnostics.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-safety.svg" width="100%" alt="Safety and Power Considerations"/>
-</div>
+<samp><b>Safety and Power Considerations</b></samp>
 
 - <samp>Use an appropriate power supply for the ESP32, motor driver, and motors.</samp>
 - <samp>Do not power high-current motors directly from ESP32 GPIO pins.</samp>
@@ -229,9 +207,7 @@ cd Gesture-control-rc-car
 - <samp>Secure the battery and wiring before operating the vehicle.</samp>
 - <samp>Test at low speed before increasing motor speed.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-troubleshooting.svg" width="100%" alt="Troubleshooting"/>
-</div>
+<samp><b>Troubleshooting</b></samp>
 
 <samp><b>ESP-NOW Communication Fails</b></samp>
 
@@ -245,9 +221,7 @@ cd Gesture-control-rc-car
 
 <samp>Check motor-driver wiring, motor-driver power, STBY configuration, motor connections, and GPIO definitions.</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-future-improvements.svg" width="100%" alt="Future Improvements"/>
-</div>
+<samp><b>Future Improvements</b></samp>
 
 - <samp>Adjustable gesture sensitivity</samp>
 - <samp>Speed control based on tilt angle</samp>
@@ -261,9 +235,7 @@ cd Gesture-control-rc-car
 - <samp>Improved wireless security</samp>
 - <samp>Additional gesture-based control modes</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-technologies.svg" width="100%" alt="Technologies"/>
-</div>
+<samp><b>Technologies</b></samp>
 
 | Category | Technology |
 |---|---|
@@ -276,9 +248,7 @@ cd Gesture-control-rc-car
 | Development Environment | Arduino IDE |
 | Communication Interface | I2C |
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-author.svg" width="100%" alt="Author"/>
-</div>
+<samp><b>Author</b></samp>
 
 <samp><b>Yoson</b></samp>
 
@@ -286,8 +256,6 @@ cd Gesture-control-rc-car
 
 <samp>GitHub: https://github.com/yo5on</samp>
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-license.svg" width="100%" alt="License"/>
-</div>
+<samp><b>License</b></samp>
 
 <samp>This project is intended for educational and personal use. You are free to explore, modify, and extend the project for robotics and embedded systems experiments.</samp>
