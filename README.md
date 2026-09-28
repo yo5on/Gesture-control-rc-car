@@ -12,33 +12,41 @@
 
 ---
 
-An ESP32-based wireless RC car controlled through hand gestures using an MPU6050 accelerometer and ESP-NOW communication.
+<samp>An ESP32-based wireless RC car controlled through hand gestures using an MPU6050 accelerometer and ESP-NOW communication.</samp>
 
-## Overview
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-overview.svg" width="100%" alt="Overview"/>
+</div>
 
-The project uses two ESP32 boards: one as the gesture-controlled transmitter and another as the receiver responsible for motor control. Tilting the transmitter changes the detected acceleration values, which are mapped to forward, backward, left, right, or stop commands.
+<samp>The project uses two ESP32 boards: one as the gesture-controlled transmitter and another as the receiver responsible for motor control. Tilting the transmitter changes the detected acceleration values, which are mapped to forward, backward, left, right, or stop commands.</samp>
 
-## Project Images
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-project-images.svg" width="100%" alt="Project Images"/>
+</div>
 
 | | |
 |---|---|
 | ![](./pic/pic1.jpeg) | ![](./pic/pic3.jpeg) |
 | ![](./pic/pic2.jpeg) | ![](./pic/pic4.jpeg) |
 
-## Features
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-features.svg" width="100%" alt="Features"/>
+</div>
 
-- Gesture-based directional control
-- Wireless communication using ESP-NOW
-- MPU6050 accelerometer input
-- Forward and backward movement
-- Left and right pivot control
-- Configurable movement dead zone
-- Dual-motor control
-- Adjustable motor speed
-- Serial output for debugging
-- Two-ESP32 transmitter and receiver architecture
+- <samp>Gesture-based directional control</samp>
+- <samp>Wireless communication using ESP-NOW</samp>
+- <samp>MPU6050 accelerometer input</samp>
+- <samp>Forward and backward movement</samp>
+- <samp>Left and right pivot control</samp>
+- <samp>Configurable movement dead zone</samp>
+- <samp>Dual-motor control</samp>
+- <samp>Adjustable motor speed</samp>
+- <samp>Serial output for debugging</samp>
+- <samp>Two-ESP32 transmitter and receiver architecture</samp>
 
-## Hardware Components
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-hardware-components.svg" width="100%" alt="Hardware Components"/>
+</div>
 
 | Component | Quantity |
 |---|---:|
@@ -50,11 +58,13 @@ The project uses two ESP32 boards: one as the gesture-controlled transmitter and
 | Battery / Power Supply | As required |
 | Connecting Wires | As required |
 
-## Transmitter
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-transmitter.svg" width="100%" alt="Transmitter"/>
+</div>
 
-The transmitter consists of an ESP32 and an MPU6050 motion sensor. The MPU6050 detects movement and tilt, the ESP32 converts acceleration values into movement commands, and ESP-NOW sends those commands wirelessly to the receiver.
+<samp>The transmitter consists of an ESP32 and an MPU6050 motion sensor. The MPU6050 detects movement and tilt, the ESP32 converts acceleration values into movement commands, and ESP-NOW sends those commands wirelessly to the receiver.</samp>
 
-### Wiring
+<samp><b>Wiring</b></samp>
 
 | MPU6050 | ESP32 |
 |---|---|
@@ -65,7 +75,7 @@ The transmitter consists of an ESP32 and an MPU6050 motion sensor. The MPU6050 d
 
 ![Transmitter Wiring Diagram](./wiring%20diagrams/transmitter.png)
 
-### Direction Logic
+<samp><b>Direction Logic</b></samp>
 
 | Sensor Condition | Command |
 |---|---|
@@ -79,7 +89,7 @@ The transmitter consists of an ESP32 and an MPU6050 motion sensor. The MPU6050 d
 int deadZone = 3000;
 ```
 
-### Direction Mapping
+<samp><b>Direction Mapping</b></samp>
 
 ```text
 0 = STOP
@@ -89,11 +99,13 @@ int deadZone = 3000;
 4 = RIGHT
 ```
 
-## Receiver
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-receiver.svg" width="100%" alt="Receiver"/>
+</div>
 
-The receiver consists of an ESP32 and a motor driver connected to two DC motors. It receives commands through ESP-NOW and controls the motor driver accordingly.
+<samp>The receiver consists of an ESP32 and a motor driver connected to two DC motors. It receives commands through ESP-NOW and controls the motor driver accordingly.</samp>
 
-### Wiring
+<samp><b>Wiring</b></samp>
 
 ![Receiver Wiring Diagram](./wiring%20diagrams/receiver.png)
 
@@ -107,17 +119,19 @@ The receiver consists of an ESP32 and a motor driver connected to two DC motors.
 | BIN2 | 9 |
 | PWMB | 10 |
 
-### Motor Control
+<samp><b>Motor Control</b></samp>
 
-The vehicle supports forward, backward, left, right, and stop states. The configured maximum motor speed is:
+<samp>The vehicle supports forward, backward, left, right, and stop states. The configured maximum motor speed is:</samp>
 
 ```cpp
 #define MAX_SPEED 130
 ```
 
-## Wireless Communication
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-wireless-communication.svg" width="100%" alt="Wireless Communication"/>
+</div>
 
-The transmitter and receiver communicate using ESP-NOW.
+<samp>The transmitter and receiver communicate using ESP-NOW.</samp>
 
 ```text
 Transmitter
@@ -133,20 +147,24 @@ Motor Driver
 Motor Motor
 ```
 
-The current implementation uses Wi-Fi channel 1 and an unencrypted ESP-NOW peer connection.
+<samp>The current implementation uses Wi-Fi channel 1 and an unencrypted ESP-NOW peer connection.</samp>
 
-## Working Principle
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-working-principle.svg" width="100%" alt="Working Principle"/>
+</div>
 
-1. The user tilts the transmitter.
-2. The MPU6050 detects the resulting acceleration.
-3. The transmitter ESP32 reads the X and Y acceleration values.
-4. The values are compared with the configured dead zone.
-5. A movement command is selected.
-6. The command is transmitted using ESP-NOW.
-7. The receiver ESP32 processes the command.
-8. The motor driver controls the two DC motors.
+1. <samp>The user tilts the transmitter.</samp>
+2. <samp>The MPU6050 detects the resulting acceleration.</samp>
+3. <samp>The transmitter ESP32 reads the X and Y acceleration values.</samp>
+4. <samp>The values are compared with the configured dead zone.</samp>
+5. <samp>A movement command is selected.</samp>
+6. <samp>The command is transmitted using ESP-NOW.</samp>
+7. <samp>The receiver ESP32 processes the command.</samp>
+8. <samp>The motor driver controls the two DC motors.</samp>
 
-## Project Structure
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-project-structure.svg" width="100%" alt="Project Structure"/>
+</div>
 
 ```text
 Gesture-control-rc-car/
@@ -164,78 +182,88 @@ Gesture-control-rc-car/
 └── README.md
 ```
 
-## Getting Started
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-getting-started.svg" width="100%" alt="Getting Started"/>
+</div>
 
-### Prerequisites
+<samp><b>Prerequisites</b></samp>
 
-- Arduino IDE
-- ESP32 board support package
-- Wire library
-- MPU6050 library
-- Two ESP32 development boards
-- MPU6050 sensor
-- Compatible motor driver
-- Two DC motors
-- Robotic car chassis
-- Suitable power supply
+- <samp>Arduino IDE</samp>
+- <samp>ESP32 board support package</samp>
+- <samp>Wire library</samp>
+- <samp>MPU6050 library</samp>
+- <samp>Two ESP32 development boards</samp>
+- <samp>MPU6050 sensor</samp>
+- <samp>Compatible motor driver</samp>
+- <samp>Two DC motors</samp>
+- <samp>Robotic car chassis</samp>
+- <samp>Suitable power supply</samp>
 
-### Clone
+<samp><b>Clone</b></samp>
 
 ```bash
 git clone https://github.com/yo5on/Gesture-control-rc-car.git
 cd Gesture-control-rc-car
 ```
 
-### Transmitter
+<samp><b>Transmitter</b></samp>
 
-Open `code/transmitter.ino`, verify the receiver ESP32 MAC address, and upload it to the ESP32 connected to the MPU6050.
+<samp>Open <code>code/transmitter.ino</code>, verify the receiver ESP32 MAC address, and upload it to the ESP32 connected to the MPU6050.</samp>
 
-### Receiver
+<samp><b>Receiver</b></samp>
 
-Open `code/receiver.ino`, verify the motor-driver GPIO configuration, and upload it to the second ESP32.
+<samp>Open <code>code/receiver.ino</code>, verify the motor-driver GPIO configuration, and upload it to the second ESP32.</samp>
 
-### Serial Monitor
+<samp><b>Serial Monitor</b></samp>
 
-Use the Arduino IDE Serial Monitor at `115200` baud for transmitter and receiver diagnostics.
+<samp>Use the Arduino IDE Serial Monitor at <code>115200</code> baud for transmitter and receiver diagnostics.</samp>
 
-## Safety and Power Considerations
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-safety.svg" width="100%" alt="Safety and Power Considerations"/>
+</div>
 
-- Use an appropriate power supply for the ESP32, motor driver, and motors.
-- Do not power high-current motors directly from ESP32 GPIO pins.
-- Ensure the motor driver and ESP32 have an appropriate common ground.
-- Verify motor polarity before testing directional controls.
-- Secure the battery and wiring before operating the vehicle.
-- Test at low speed before increasing motor speed.
+- <samp>Use an appropriate power supply for the ESP32, motor driver, and motors.</samp>
+- <samp>Do not power high-current motors directly from ESP32 GPIO pins.</samp>
+- <samp>Ensure the motor driver and ESP32 have an appropriate common ground.</samp>
+- <samp>Verify motor polarity before testing directional controls.</samp>
+- <samp>Secure the battery and wiring before operating the vehicle.</samp>
+- <samp>Test at low speed before increasing motor speed.</samp>
 
-## Troubleshooting
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-troubleshooting.svg" width="100%" alt="Troubleshooting"/>
+</div>
 
-### ESP-NOW Communication Fails
+<samp><b>ESP-NOW Communication Fails</b></samp>
 
-Check power, receiver MAC address, Wi-Fi channel, ESP-NOW initialization, and peer registration.
+<samp>Check power, receiver MAC address, Wi-Fi channel, ESP-NOW initialization, and peer registration.</samp>
 
-### MPU6050 Is Not Detected
+<samp><b>MPU6050 Is Not Detected</b></samp>
 
-Check SDA/SCL, power, ground, I2C configuration, and library installation.
+<samp>Check SDA/SCL, power, ground, I2C configuration, and library installation.</samp>
 
-### Motors Do Not Move
+<samp><b>Motors Do Not Move</b></samp>
 
-Check motor-driver wiring, motor-driver power, STBY configuration, motor connections, and GPIO definitions.
+<samp>Check motor-driver wiring, motor-driver power, STBY configuration, motor connections, and GPIO definitions.</samp>
 
-## Future Improvements
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-future-improvements.svg" width="100%" alt="Future Improvements"/>
+</div>
 
-- Adjustable gesture sensitivity
-- Speed control based on tilt angle
-- Smoother acceleration and deceleration
-- Mobile application control
-- Battery voltage monitoring
-- OLED telemetry display
-- Obstacle detection
-- Autonomous navigation
-- Camera integration
-- Improved wireless security
-- Additional gesture-based control modes
+- <samp>Adjustable gesture sensitivity</samp>
+- <samp>Speed control based on tilt angle</samp>
+- <samp>Smoother acceleration and deceleration</samp>
+- <samp>Mobile application control</samp>
+- <samp>Battery voltage monitoring</samp>
+- <samp>OLED telemetry display</samp>
+- <samp>Obstacle detection</samp>
+- <samp>Autonomous navigation</samp>
+- <samp>Camera integration</samp>
+- <samp>Improved wireless security</samp>
+- <samp>Additional gesture-based control modes</samp>
 
-## Technologies
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-technologies.svg" width="100%" alt="Technologies"/>
+</div>
 
 | Category | Technology |
 |---|---|
@@ -248,13 +276,18 @@ Check motor-driver wiring, motor-driver power, STBY configuration, motor connect
 | Development Environment | Arduino IDE |
 | Communication Interface | I2C |
 
-## Author
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-author.svg" width="100%" alt="Author"/>
+</div>
 
-**Yoson**  
-Computer Science student interested in AI/ML, robotics, embedded systems, and automation.
+<samp><b>Yoson</b></samp>
 
-GitHub: https://github.com/yo5on
+<samp>Computer Science student interested in AI/ML, robotics, embedded systems, and automation.</samp>
 
-## License
+<samp>GitHub: https://github.com/yo5on</samp>
 
-This project is intended for educational and personal use. You are free to explore, modify, and extend the project for robotics and embedded systems experiments.
+<div align="center">
+<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-license.svg" width="100%" alt="License"/>
+</div>
+
+<samp>This project is intended for educational and personal use. You are free to explore, modify, and extend the project for robotics and embedded systems experiments.</samp>
