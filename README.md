@@ -1,7 +1,4 @@
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/yo5on/yo5on/main/hd-projects.svg" width="620" alt="projects"/>
-
 <samp><b>GESTURE-CONTROLLED RC CAR</b></samp>
 
 <samp>esp32 · mpu6050 · esp-now · embedded systems</samp>
