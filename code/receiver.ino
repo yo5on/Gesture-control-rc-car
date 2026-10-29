@@ -10,7 +10,7 @@
 #define STBY 4
 #define BIN1 5
 #define BIN2 6
-#define PWMB 7
+#define PWMB 10
 
 // Reduced speed for 3V motors.
 #define MAX_SPEED 130
