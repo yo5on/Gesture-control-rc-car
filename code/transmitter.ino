@@ -17,20 +17,13 @@ typedef struct {
 } ControlData;
 
 ControlData data;
+bool espNowReady = false;
 
 int16_t ax, ay, az;
 int deadZone = 3000;
 
-// ===== SEND STATUS CALLBACK =====
-void onSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-  if (status == ESP_NOW_SEND_SUCCESS)
-    Serial.println("Send OK");
-  else
-    Serial.println("Send Failed");
-}
-
 // ===== ESP-NOW INIT =====
-void initEspNow() {
+bool initEspNow() {
 
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
@@ -39,10 +32,8 @@ void initEspNow() {
 
   if (esp_now_init() != ESP_OK) {
     Serial.println("ESP-NOW Init Failed");
-    return;
+    return false;
   }
-
-  esp_now_register_send_cb(onSent);
 
   esp_now_peer_info_t peerInfo = {};
   memcpy(peerInfo.peer_addr, receiverMAC, 6);
@@ -51,10 +42,12 @@ void initEspNow() {
 
   if (esp_now_add_peer(&peerInfo) != ESP_OK) {
     Serial.println("Peer Add Failed");
-    return;
+    esp_now_deinit();
+    return false;
   }
 
   Serial.println("ESP-NOW READY");
+  return true;
 }
 
 void setup() {
@@ -72,7 +65,7 @@ void setup() {
 
   Serial.println("MPU6050 OK");
 
-  initEspNow();
+  espNowReady = initEspNow();
 }
 
 void loop() {
@@ -104,7 +97,16 @@ void loop() {
     Serial.println("TX: STOP");
   }
 
-  esp_now_send(receiverMAC, (uint8_t *)&data, sizeof(data));
+  if (espNowReady) {
+    const esp_err_t result = esp_now_send(receiverMAC, (uint8_t *)&data, sizeof(data));
+    if (result != ESP_OK) {
+      static unsigned long lastSendErrorAt = 0;
+      if (millis() - lastSendErrorAt >= 2000) {
+        Serial.println("ESP-NOW send could not be queued; check receiver MAC/channel");
+        lastSendErrorAt = millis();
+      }
+    }
+  }
 
   delay(70);
 }
