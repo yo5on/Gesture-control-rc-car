@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <esp_now.h>
+#include <esp_wifi.h>
 #include <esp_arduino_version.h>
 
 // ESP32-C3 Super Mini pin map. GPIO 2, 8 and 9 are boot-strapping pins,
@@ -139,6 +140,7 @@ void setup() {
 
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
+  esp_wifi_set_channel(1, WIFI_SECOND_CHAN_NONE);
   Serial.print("Receiver MAC: ");
   Serial.println(WiFi.macAddress());
 
