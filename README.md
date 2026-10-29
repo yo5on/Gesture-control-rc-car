@@ -117,9 +117,9 @@ int deadZone = 3000;
 
 <div align="center"><samp><b>Receiver</b></samp></div>
 
-<samp>The receiver consists of an ESP32 and a motor driver connected to two DC motors. It receives commands through ESP-NOW and controls the motor driver accordingly.</samp>
+<samp>The receiver target is an ESP32-C3 Super Mini and a TB6612FNG driver connected to two DC motors. It receives commands through ESP-NOW, and the motors stop automatically if no valid command arrives for 500 ms. The motor pin mapping was changed to avoid the ESP32-C3 boot-strapping pins; rewire to the table and diagram before using the updated receiver code.</samp>
 
-<div align="center"><img src="wiring%20diagrams/receiver.png" alt="Receiver Wiring Diagram" width="80%"></div>
+<div align="center"><img src="wiring%20diagrams/receiver.svg" alt="ESP32-C3 and TB6612FNG receiver wiring diagram" width="90%"></div>
 
 ---
 
@@ -127,12 +127,12 @@ int deadZone = 3000;
 
 <table align="center">
 <tr><th><samp>Function</samp></th><th><samp>GPIO</samp></th></tr>
-<tr><td><samp>PWMA</samp></td><td><samp>2</samp></td></tr>
-<tr><td><samp>AIN1</samp></td><td><samp>3</samp></td></tr>
-<tr><td><samp>AIN2</samp></td><td><samp>4</samp></td></tr>
-<tr><td><samp>STBY</samp></td><td><samp>5</samp></td></tr>
-<tr><td><samp>BIN1</samp></td><td><samp>8</samp></td></tr>
-<tr><td><samp>BIN2</samp></td><td><samp>9</samp></td></tr>
+<tr><td><samp>PWMA</samp></td><td><samp>0</samp></td></tr>
+<tr><td><samp>AIN1</samp></td><td><samp>1</samp></td></tr>
+<tr><td><samp>AIN2</samp></td><td><samp>3</samp></td></tr>
+<tr><td><samp>STBY</samp></td><td><samp>4</samp></td></tr>
+<tr><td><samp>BIN1</samp></td><td><samp>5</samp></td></tr>
+<tr><td><samp>BIN2</samp></td><td><samp>6</samp></td></tr>
 <tr><td><samp>PWMB</samp></td><td><samp>10</samp></td></tr>
 </table>
 
@@ -231,7 +231,7 @@ cd Gesture-control-rc-car
 
 <samp><b>Configure the Receiver</b></samp>
 
-<samp>Open <code>code/receiver.ino</code>, verify the motor-driver GPIO configuration, and upload it to the second ESP32.</samp>
+<samp>Open <code>code/receiver.ino</code>, wire the TB6612FNG to the updated GPIO table, confirm the board is an ESP32-C3 Super Mini, and upload it to the receiver board. On startup, the Serial Monitor prints the receiver MAC; copy it into <code>receiverMAC</code> in <code>code/transmitter.ino</code>, then upload the transmitter.</samp>
 
 <samp><b>Serial Monitor</b></samp>
 
@@ -247,6 +247,8 @@ cd Gesture-control-rc-car
 - <samp>Verify motor polarity before testing directional controls.</samp>
 - <samp>Secure the battery and wiring before operating the vehicle.</samp>
 - <samp>Test at low speed before increasing motor speed.</samp>
+- <samp>The receiver mapping uses GPIO 4, 5 and 6, which are JTAG pins on ESP32-C3. Do not use those pins for an external JTAG debugger while the motor driver is attached.</samp>
+- <samp>The receiver stops after 500 ms without a valid ESP-NOW packet. Test loss-of-link behaviour with the wheels lifted before floor testing.</samp>
 
 ---
 
