@@ -85,16 +85,23 @@ void applyDirection(int direction) {
     return;
   }
 
-  // PWM is zero after stop, so enabling standby cannot unexpectedly start
-  // the previous direction while the new direction pins are being set.
-  digitalWrite(STBY, HIGH);
+  // Disable the bridge and clear PWM before changing direction pins. Re-enable
+  // it only after the new direction and speed have been written.
+  analogWrite(PWMA, 0);
+  analogWrite(PWMB, 0);
+  digitalWrite(STBY, LOW);
+
   switch (direction) {
     case 1: forward(); break;
     case 2: backward(); break;
     case 3: pivotLeft(); break;
     case 4: pivotRight(); break;
-    default: stopMotors(); break;
+    default:
+      stopMotors();
+      return;
   }
+
+  digitalWrite(STBY, HIGH);
 }
 
 // ================= ESP-NOW RECEIVE =================
