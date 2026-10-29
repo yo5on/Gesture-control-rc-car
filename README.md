@@ -197,7 +197,8 @@ Gesture-control-rc-car/
 │   └── pic4.jpeg
 ├── wiring diagrams/
 │   ├── transmitter.png
-│   └── receiver.png
+│   ├── receiver.svg       # current ESP32-C3 pin map
+│   └── receiver.png       # legacy diagram; use receiver.svg
 └── README.md
 ```
 
